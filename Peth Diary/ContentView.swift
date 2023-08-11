@@ -79,7 +79,7 @@ struct ContentView: View {
                         .padding()
                         .animation(.linear(duration: 1))
                         .onTapGesture {
-                            judul = "HAHAHA"
+//                            judul = "HAHAHA"
                             refreshView = true
                             let cloudKitSync = PersistenceController.shared // Your CloudKit synchronization manager
                             cloudKitSync.fetchAndSyncData { success in
@@ -105,6 +105,16 @@ struct ContentView: View {
                     
                 }
                 
+            }
+            .refreshable {
+                let cloudKitSync = PersistenceController.shared // Your CloudKit synchronization manager
+                cloudKitSync.fetchAndSyncData { success in
+                    if success {
+                        print("Data fetched and synced successfully")
+                    } else {
+                        print("Error fetching and syncing data")
+                    }
+                }
             }
         }
     }
