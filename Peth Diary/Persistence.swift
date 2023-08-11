@@ -6,8 +6,10 @@
 //
 
 import CoreData
+import CloudKit
 
 struct PersistenceController {
+    
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
@@ -52,5 +54,42 @@ struct PersistenceController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+
     }
+    
+    func fetchAndSyncData(completion: @escaping (Bool) -> Void) {
+        let container = CKContainer.default()
+        let database = container.publicCloudDatabase
+        
+        let query = CKQuery(recordType: "CD_Posts", predicate: NSPredicate(value: true))
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("Error fetching data from CloudKit: \(error)")
+                completion(false)
+            } else if let records = records {
+                DispatchQueue.main.async {
+                    self.updateCoreData(with: records)
+                    completion(true)
+                }
+            }
+        }
+    }
+    
+    private func updateCoreData(with cloudKitRecords: [CKRecord]) {
+        let result = PersistenceController(inMemory: true)
+        let viewContext = result.container.viewContext
+        for record in cloudKitRecords {
+            // Extract data from CKRecord and update Core Data accordingly
+            // For example, create or update managed objects based on the CKRecord data
+        }
+        
+        do {
+            try viewContext.save() // Save any changes to Core Data
+        } catch {
+            print("Error saving Core Data changes: \(error)")
+        }
+    }
+
 }

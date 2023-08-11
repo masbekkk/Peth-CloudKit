@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDA0F5572A85D2C100EEDF77 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0F5562A85D2C100EEDF77 /* EditorView.swift */; };
 		DDD0F3B82A8533E40033EE67 /* Peth_DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0F3B72A8533E40033EE67 /* Peth_DiaryApp.swift */; };
 		DDD0F3BA2A8533E40033EE67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0F3B92A8533E40033EE67 /* ContentView.swift */; };
 		DDD0F3BC2A8533E60033EE67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD0F3BB2A8533E60033EE67 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DDA0F5562A85D2C100EEDF77 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		DDD0F3B42A8533E40033EE67 /* Peth Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peth Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD0F3B72A8533E40033EE67 /* Peth_DiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peth_DiaryApp.swift; sourceTree = "<group>"; };
 		DDD0F3B92A8533E40033EE67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		DDD0F3C02A8533E60033EE67 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DDD0F3C32A8533E60033EE67 /* Peth_Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Peth_Diary.xcdatamodel; sourceTree = "<group>"; };
 		DDD0F3C52A8533E60033EE67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDD0F3CB2A85342F0033EE67 /* Peth Diary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Peth Diary.entitlements"; sourceTree = "<group>"; };
+		DDD0F3CC2A8534900033EE67 /* Peth-Diary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Peth-Diary-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +60,11 @@
 		DDD0F3B62A8533E40033EE67 /* Peth Diary */ = {
 			isa = PBXGroup;
 			children = (
+				DDD0F3CC2A8534900033EE67 /* Peth-Diary-Info.plist */,
+				DDD0F3CB2A85342F0033EE67 /* Peth Diary.entitlements */,
 				DDD0F3B72A8533E40033EE67 /* Peth_DiaryApp.swift */,
 				DDD0F3B92A8533E40033EE67 /* ContentView.swift */,
+				DDA0F5562A85D2C100EEDF77 /* EditorView.swift */,
 				DDD0F3BB2A8533E60033EE67 /* Assets.xcassets */,
 				DDD0F3C02A8533E60033EE67 /* Persistence.swift */,
 				DDD0F3C52A8533E60033EE67 /* Info.plist */,
@@ -149,6 +156,7 @@
 				DDD0F3C12A8533E60033EE67 /* Persistence.swift in Sources */,
 				DDD0F3BA2A8533E40033EE67 /* ContentView.swift in Sources */,
 				DDD0F3B82A8533E40033EE67 /* Peth_DiaryApp.swift in Sources */,
+				DDA0F5572A85D2C100EEDF77 /* EditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,12 +282,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Peth Diary/Peth Diary.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Peth Diary/Preview Content\"";
 				DEVELOPMENT_TEAM = 8R3VHB938V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Peth-Diary-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -303,12 +313,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Peth Diary/Peth Diary.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Peth Diary/Preview Content\"";
 				DEVELOPMENT_TEAM = 8R3VHB938V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Peth-Diary-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
