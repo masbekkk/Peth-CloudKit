@@ -12,6 +12,11 @@ import CloudKit
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State var isShowingEditorModal: Bool = false
+    @State var isShowingProfileModal : Bool = false
+    @State var isShowingFriendsModal : Bool = false
+    
+    @State private var refreshView: Bool = false
+    @State private var judul:String = "Peth Timeline"
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Posts.timestamp, ascending: false)],
@@ -39,25 +44,43 @@ struct ContentView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Peth's Timeline")
+            .navigationTitle(judul)
             .sheet(isPresented: $isShowingEditorModal) {
                 EditorView()
             }
-            
+            .sheet(isPresented: $isShowingProfileModal) {
+                ProfileView()
+            }
+            .sheet(isPresented: $isShowingFriendsModal) {
+                FriendsView()
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    HStack {
+                        Image(systemName: "person.crop.circle")
+                            .padding()
+                            .onTapGesture {
+                                isShowingProfileModal = true
+                            }
                     }
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack {
+                        Image(systemName: "person.3.sequence.fill")
+                            .padding()
+                            .onTapGesture {
+                                isShowingFriendsModal = true
+                            }
+                    }
+                }
+
                 ToolbarItem(placement: .bottomBar) {
-                    Image(systemName: "arrow.clockwise")
+                    Image(systemName: "arrow.clockwise.circle.fill")
                         .padding()
+                        .animation(.linear(duration: 1))
                         .onTapGesture {
-                            
+                            judul = "HAHAHA"
+                            refreshView = true
                             let cloudKitSync = PersistenceController.shared // Your CloudKit synchronization manager
                             cloudKitSync.fetchAndSyncData { success in
                                 if success {
@@ -66,6 +89,7 @@ struct ContentView: View {
                                     print("Error fetching and syncing data")
                                 }
                             }
+//                            isShowingProfileModal = true
                             
                             //                            TimelineView()
                         }
@@ -82,7 +106,6 @@ struct ContentView: View {
                 }
                 
             }
-            Text("Select an item")
         }
     }
     
