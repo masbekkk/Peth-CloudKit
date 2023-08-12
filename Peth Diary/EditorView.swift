@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import RichTextKit
 
 struct EditorView: View {
     @Environment(\.dismiss) var dismiss
-    @State var diary: String = ""
+    @State var diary = NSAttributedString.empty
+    @StateObject
+    var context = RichTextContext()
+    
     @Environment(\.managedObjectContext) private var viewContext
+    
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
+    @AppStorage("authID") var authID: String = ""
+    @AppStorage("username") var username: String = ""
     
     @State private var isShowingLogin: Bool = false
     
@@ -19,20 +26,20 @@ struct EditorView: View {
         if isLoggedIn {
             NavigationView{
                 NavigationStack {
-                    TextField("Ada apa hari inii?!?!", text: $diary)
-                    //                RichTextEditor(text: $post, context: context) {
-                    //                    $0.textContentInset = CGSize(width: 10, height: 20)
-                    //                }
-                    //                .background(Material.regular)
-                    //                .cornerRadius(5)
-                    //                .focusedValue(\.richTextContext, context)
-                    //                .padding()
-                    //
-                    //                RichTextKeyboardToolbar(
-                    //                    context: context,
-                    //                    leadingButtons: {},
-                    //                    trailingButtons: {}
-                    //                )
+                    //                    TextField("Ada apa hari inii?!?!", text: $diary)
+                    RichTextEditor(text: $diary, context: context) {
+                        $0.textContentInset = CGSize(width: 10, height: 20)
+                    }
+                    .background(Material.regular)
+                    .cornerRadius(5)
+                    .focusedValue(\.richTextContext, context)
+                    .padding()
+                    
+                    RichTextKeyboardToolbar(
+                        context: context,
+                        leadingButtons: {},
+                        trailingButtons: {}
+                    )
                 }
                 .background(Color.primary.opacity(0.15))
                 .navigationBarTitle("Peth It", displayMode: .inline)
@@ -50,7 +57,7 @@ struct EditorView: View {
                         Button(action:{
                             let post = Posts(context: viewContext)
                             post.id = UUID()
-                            post.user_id = "userid hehee"
+                            post.user_id = authID
                             post.post = diary
                             post.timestamp = Date()
                             do {

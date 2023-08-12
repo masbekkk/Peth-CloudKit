@@ -11,6 +11,7 @@
 		DDA0F5592A85E56600EEDF77 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0F5582A85E56600EEDF77 /* LoginView.swift */; };
 		DDA0F55B2A85E95000EEDF77 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0F55A2A85E95000EEDF77 /* ProfileView.swift */; };
 		DDA0F55D2A85EC4C00EEDF77 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0F55C2A85EC4C00EEDF77 /* FriendsView.swift */; };
+		DDA0F5602A861DE600EEDF77 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = DDA0F55F2A861DE600EEDF77 /* RichTextKit */; };
 		DDD0F3B82A8533E40033EE67 /* Peth_DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0F3B72A8533E40033EE67 /* Peth_DiaryApp.swift */; };
 		DDD0F3BA2A8533E40033EE67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0F3B92A8533E40033EE67 /* ContentView.swift */; };
 		DDD0F3BC2A8533E60033EE67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD0F3BB2A8533E60033EE67 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA0F5602A861DE600EEDF77 /* RichTextKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,8 +76,8 @@
 				DDA0F55C2A85EC4C00EEDF77 /* FriendsView.swift */,
 				DDA0F5582A85E56600EEDF77 /* LoginView.swift */,
 				DDA0F5562A85D2C100EEDF77 /* EditorView.swift */,
-				DDD0F3BB2A8533E60033EE67 /* Assets.xcassets */,
 				DDD0F3C02A8533E60033EE67 /* Persistence.swift */,
+				DDD0F3BB2A8533E60033EE67 /* Assets.xcassets */,
 				DDD0F3C52A8533E60033EE67 /* Info.plist */,
 				DDD0F3C22A8533E60033EE67 /* Peth_Diary.xcdatamodeld */,
 				DDD0F3BD2A8533E60033EE67 /* Preview Content */,
@@ -107,6 +109,9 @@
 			dependencies = (
 			);
 			name = "Peth Diary";
+			packageProductDependencies = (
+				DDA0F55F2A861DE600EEDF77 /* RichTextKit */,
+			);
 			productName = "Peth Diary";
 			productReference = DDD0F3B42A8533E40033EE67 /* Peth Diary.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +140,9 @@
 				Base,
 			);
 			mainGroup = DDD0F3AB2A8533E40033EE67;
+			packageReferences = (
+				DDA0F55E2A861DE600EEDF77 /* XCRemoteSwiftPackageReference "RichTextKit" */,
+			);
 			productRefGroup = DDD0F3B52A8533E40033EE67 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -373,6 +381,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DDA0F55E2A861DE600EEDF77 /* XCRemoteSwiftPackageReference "RichTextKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/RichTextKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.7.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DDA0F55F2A861DE600EEDF77 /* RichTextKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDA0F55E2A861DE600EEDF77 /* XCRemoteSwiftPackageReference "RichTextKit" */;
+			productName = RichTextKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DDD0F3C22A8533E60033EE67 /* Peth_Diary.xcdatamodeld */ = {

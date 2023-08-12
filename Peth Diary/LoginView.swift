@@ -19,6 +19,12 @@ struct LoginView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    //    var onCreateUser : ((String) -> Void)?
+    //
+    //    init(onCreateUser: @escaping (String) -> Void) {
+    //        self.onCreateUser = onCreateUser
+    //    }
+    
     var body: some View {
         VStack {
             SignInWithAppleButton(.signIn) { request in
@@ -45,19 +51,25 @@ struct LoginView: View {
                         }
                         
                         authID = userID
-                        username = "username"
-                        let user = Pengguna(context: viewContext)
-                        user.id = userID
-                        user.name = self.fullName
-                        user.username = "username"
                         
-                        do {
-                            try viewContext.save()
-                        } catch {
-                            // Replace this implementation with code to handle the error appropriately.
-                            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                            let nsError = error as NSError
-                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        let isUserExist = PersistenceController.shared.isUserExists(context: viewContext, authID: authID, fullName: self.fullName, username: username)
+                        if isUserExist == false {
+                            username = "username"
+                            let user = Pengguna(context: viewContext)
+                            user.id = userID
+                            user.name = self.fullName
+                            user.username = username
+                            
+                            do {
+                                try viewContext.save()
+                                print("BERHASIL NAMBAH DATA BARU")
+                            } catch {
+                                // Replace this implementation with code to handle the error appropriately.
+                                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                                let nsError = error as NSError
+                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                            }
+                            
                         }
                         
                         // User's email
@@ -67,8 +79,6 @@ struct LoginView: View {
                         
                         isLoggedIn = true
                         ContentView()
-                        
-                        //                            print(" \(self.userEmail) and name : \(fullName)")
                         
                     }
                 case .failure(let error):
@@ -95,8 +105,8 @@ struct LoginView: View {
 }
 
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        LoginView()
+//    }
+//}

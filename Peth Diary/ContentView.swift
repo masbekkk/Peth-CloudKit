@@ -35,10 +35,20 @@ struct ContentView: View {
                             Text("2h")
                                 .font(.caption2)
                         }
-                        Text(post.post ?? "")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.leading)
+                        if let attributedString = post.post as? NSAttributedString {
+                            let plainString = attributedString.string
+                            Text(plainString)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.leading)
+                            
+                        } else {
+                            Text("Invalid post format")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.leading)
+                            
+                        }
                         Divider()
                     }
                     .padding()
@@ -73,13 +83,13 @@ struct ContentView: View {
                             }
                     }
                 }
-
+                
                 ToolbarItem(placement: .bottomBar) {
                     Image(systemName: "arrow.clockwise.circle.fill")
                         .padding()
                         .animation(.linear(duration: 1))
                         .onTapGesture {
-//                            judul = "HAHAHA"
+                            //                            judul = "HAHAHA"
                             refreshView = true
                             let cloudKitSync = PersistenceController.shared // Your CloudKit synchronization manager
                             cloudKitSync.fetchAndSyncData { success in
@@ -89,7 +99,7 @@ struct ContentView: View {
                                     print("Error fetching and syncing data")
                                 }
                             }
-//                            isShowingProfileModal = true
+                            //                            isShowingProfileModal = true
                             
                             //                            TimelineView()
                         }
@@ -115,25 +125,6 @@ struct ContentView: View {
                         print("Error fetching and syncing data")
                     }
                 }
-            }
-        }
-    }
-    
-    private func addItem() {
-        withAnimation {
-            let newItem = Posts(context: viewContext)
-            newItem.id = UUID()
-            newItem.post = "coba post"
-            newItem.user_id = "coba"
-            newItem.timestamp = Date()
-            
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }
