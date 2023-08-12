@@ -10,7 +10,7 @@ import RichTextKit
 
 struct EditorView: View {
     @Environment(\.dismiss) var dismiss
-    @State var diary = NSAttributedString.empty
+    @State var diary: String = ""
     @StateObject
     var context = RichTextContext()
     
@@ -26,20 +26,20 @@ struct EditorView: View {
         if isLoggedIn {
             NavigationView{
                 NavigationStack {
-                    //                    TextField("Ada apa hari inii?!?!", text: $diary)
-                    RichTextEditor(text: $diary, context: context) {
-                        $0.textContentInset = CGSize(width: 10, height: 20)
-                    }
-                    .background(Material.regular)
-                    .cornerRadius(5)
-                    .focusedValue(\.richTextContext, context)
-                    .padding()
-                    
-                    RichTextKeyboardToolbar(
-                        context: context,
-                        leadingButtons: {},
-                        trailingButtons: {}
-                    )
+                    TextField("Ada apa hari inii?!?!", text: $diary)
+                    //                    RichTextEditor(text: $diary, context: context) {
+                    //                        $0.textContentInset = CGSize(width: 10, height: 20)
+                    //                    }
+                    //                    .background(Material.regular)
+                    //                    .cornerRadius(5)
+                    //                    .focusedValue(\.richTextContext, context)
+                    //                    .padding()
+                    //
+                    //                    RichTextKeyboardToolbar(
+                    //                        context: context,
+                    //                        leadingButtons: {},
+                    //                        trailingButtons: {}
+                    //                    )
                 }
                 .background(Color.primary.opacity(0.15))
                 .navigationBarTitle("Peth It", displayMode: .inline)

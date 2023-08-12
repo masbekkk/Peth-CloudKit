@@ -35,20 +35,26 @@ struct ContentView: View {
                             Text("2h")
                                 .font(.caption2)
                         }
-                        if let attributedString = post.post as? NSAttributedString {
-                            let plainString = attributedString.string
-                            Text(plainString)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.leading)
-                            
-                        } else {
-                            Text("Invalid post format")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.leading)
-                            
-                        }
+                        
+                        Text(post.post ?? "kosong")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.leading)
+                        
+                        //                        if let attributedString = post.post as? NSAttributedString {
+                        //                            let plainString = attributedString.string
+                        //                            Text(plainString)
+                        //                                .font(.subheadline)
+                        //                                .foregroundColor(.secondary)
+                        //                                .multilineTextAlignment(.leading)
+                        //
+                        //                        } else {
+                        //                            Text("Invalid post format")
+                        //                                .font(.subheadline)
+                        //                                .foregroundColor(.secondary)
+                        //                                .multilineTextAlignment(.leading)
+                        //
+                        //                        }
                         Divider()
                     }
                     .padding()

@@ -7,13 +7,13 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="post" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Posts" inverseName="pengguna" inverseEntity="Posts"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Posts" inverseName="penggunas" inverseEntity="Posts"/>
     </entity>
     <entity name="Posts" representedClassName="Posts" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="post" optional="YES" attributeType="Transformable"/>
+        <attribute name="post" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="user_id" optional="YES" attributeType="String"/>
-        <relationship name="pengguna" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Pengguna" inverseName="post" inverseEntity="Pengguna"/>
+        <relationship name="penggunas" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Pengguna" inverseName="post" inverseEntity="Pengguna"/>
     </entity>
 </model>
