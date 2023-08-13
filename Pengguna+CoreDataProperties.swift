@@ -15,7 +15,8 @@ extension Pengguna {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Pengguna> {
         return NSFetchRequest<Pengguna>(entityName: "Pengguna")
     }
-
+    
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
     @NSManaged public var username: String?
     @NSManaged public var post: NSSet?

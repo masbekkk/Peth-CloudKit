@@ -44,7 +44,8 @@ struct ContentView: View {
                     }
                     .padding()
                 }
-            }            .navigationTitle(judul)
+            }
+            .navigationTitle(judul)
             .sheet(isPresented: $isShowingEditorModal) {
                 EditorView()
             }
