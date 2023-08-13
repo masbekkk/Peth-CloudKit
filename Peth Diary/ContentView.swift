@@ -29,7 +29,7 @@ struct ContentView: View {
                 ForEach(posts,  id: \.id) { post in
                     LazyVStack(alignment: .leading) {
                         HStack{
-                            Text("username")
+                            Text(post.penggunas?.username ?? "unknown usernem")
                                 .font(.headline)
                             Text("·")
                             Text("2h")
@@ -40,27 +40,11 @@ struct ContentView: View {
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.leading)
-                        
-                        //                        if let attributedString = post.post as? NSAttributedString {
-                        //                            let plainString = attributedString.string
-                        //                            Text(plainString)
-                        //                                .font(.subheadline)
-                        //                                .foregroundColor(.secondary)
-                        //                                .multilineTextAlignment(.leading)
-                        //
-                        //                        } else {
-                        //                            Text("Invalid post format")
-                        //                                .font(.subheadline)
-                        //                                .foregroundColor(.secondary)
-                        //                                .multilineTextAlignment(.leading)
-                        //
-                        //                        }
                         Divider()
                     }
                     .padding()
                 }
-            }
-            .navigationTitle(judul)
+            }            .navigationTitle(judul)
             .sheet(isPresented: $isShowingEditorModal) {
                 EditorView()
             }

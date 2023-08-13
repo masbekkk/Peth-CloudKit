@@ -56,7 +56,7 @@ struct LoginView: View {
                         if isUserExist == false {
                             username = "username"
                             let user = Pengguna(context: viewContext)
-                            user.id = userID
+//                            user.id = userID
                             user.name = self.fullName
                             user.username = username
                             

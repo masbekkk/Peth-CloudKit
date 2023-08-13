@@ -12,6 +12,10 @@
 		DDA0F55B2A85E95000EEDF77 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0F55A2A85E95000EEDF77 /* ProfileView.swift */; };
 		DDA0F55D2A85EC4C00EEDF77 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0F55C2A85EC4C00EEDF77 /* FriendsView.swift */; };
 		DDA0F5602A861DE600EEDF77 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = DDA0F55F2A861DE600EEDF77 /* RichTextKit */; };
+		DDA289A82A8882A400F2FA4C /* Pengguna+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA289A42A8882A400F2FA4C /* Pengguna+CoreDataClass.swift */; };
+		DDA289A92A8882A400F2FA4C /* Pengguna+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA289A52A8882A400F2FA4C /* Pengguna+CoreDataProperties.swift */; };
+		DDA289AA2A8882A400F2FA4C /* Posts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA289A62A8882A400F2FA4C /* Posts+CoreDataClass.swift */; };
+		DDA289AB2A8882A400F2FA4C /* Posts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA289A72A8882A400F2FA4C /* Posts+CoreDataProperties.swift */; };
 		DDD0F3B82A8533E40033EE67 /* Peth_DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0F3B72A8533E40033EE67 /* Peth_DiaryApp.swift */; };
 		DDD0F3BA2A8533E40033EE67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0F3B92A8533E40033EE67 /* ContentView.swift */; };
 		DDD0F3BC2A8533E60033EE67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD0F3BB2A8533E60033EE67 /* Assets.xcassets */; };
@@ -25,6 +29,10 @@
 		DDA0F5582A85E56600EEDF77 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DDA0F55A2A85E95000EEDF77 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DDA0F55C2A85EC4C00EEDF77 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		DDA289A42A8882A400F2FA4C /* Pengguna+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pengguna+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		DDA289A52A8882A400F2FA4C /* Pengguna+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pengguna+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		DDA289A62A8882A400F2FA4C /* Posts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Posts+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		DDA289A72A8882A400F2FA4C /* Posts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Posts+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		DDD0F3B42A8533E40033EE67 /* Peth Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peth Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD0F3B72A8533E40033EE67 /* Peth_DiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peth_DiaryApp.swift; sourceTree = "<group>"; };
 		DDD0F3B92A8533E40033EE67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +76,10 @@
 		DDD0F3B62A8533E40033EE67 /* Peth Diary */ = {
 			isa = PBXGroup;
 			children = (
+				DDA289A42A8882A400F2FA4C /* Pengguna+CoreDataClass.swift */,
+				DDA289A52A8882A400F2FA4C /* Pengguna+CoreDataProperties.swift */,
+				DDA289A62A8882A400F2FA4C /* Posts+CoreDataClass.swift */,
+				DDA289A72A8882A400F2FA4C /* Posts+CoreDataProperties.swift */,
 				DDD0F3CC2A8534900033EE67 /* Peth-Diary-Info.plist */,
 				DDD0F3CB2A85342F0033EE67 /* Peth Diary.entitlements */,
 				DDD0F3B72A8533E40033EE67 /* Peth_DiaryApp.swift */,
@@ -170,11 +182,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA0F5592A85E56600EEDF77 /* LoginView.swift in Sources */,
+				DDA289A82A8882A400F2FA4C /* Pengguna+CoreDataClass.swift in Sources */,
+				DDA289A92A8882A400F2FA4C /* Pengguna+CoreDataProperties.swift in Sources */,
 				DDD0F3C42A8533E60033EE67 /* Peth_Diary.xcdatamodeld in Sources */,
 				DDA0F55D2A85EC4C00EEDF77 /* FriendsView.swift in Sources */,
 				DDD0F3C12A8533E60033EE67 /* Persistence.swift in Sources */,
 				DDD0F3BA2A8533E40033EE67 /* ContentView.swift in Sources */,
+				DDA289AA2A8882A400F2FA4C /* Posts+CoreDataClass.swift in Sources */,
 				DDD0F3B82A8533E40033EE67 /* Peth_DiaryApp.swift in Sources */,
+				DDA289AB2A8882A400F2FA4C /* Posts+CoreDataProperties.swift in Sources */,
 				DDA0F55B2A85E95000EEDF77 /* ProfileView.swift in Sources */,
 				DDA0F5572A85D2C100EEDF77 /* EditorView.swift in Sources */,
 			);

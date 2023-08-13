@@ -57,7 +57,8 @@ struct EditorView: View {
                         Button(action:{
                             let post = Posts(context: viewContext)
                             post.id = UUID()
-                            post.user_id = authID
+                            post.penggunas = Pengguna(context: viewContext)
+                            post.penggunas?.username = username
                             post.post = diary
                             post.timestamp = Date()
                             do {
