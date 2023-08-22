@@ -32,7 +32,7 @@ struct ContentView: View {
                             Text(post.title ?? "unknown title")
                                 .font(.headline)
                             Text("·")
-                            Text("2h")
+                            Text(timeAgo(from: post.timestamp ?? Date()))
                                 .font(.caption2)
                         }
                         
@@ -56,46 +56,46 @@ struct ContentView: View {
                 FriendsView()
             }
             .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    HStack {
-//                        Image(systemName: "person.crop.circle")
-//                            .padding()
-//                            .onTapGesture {
-//                                isShowingProfileModal = true
-//                            }
-//                    }
-//                }
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    HStack {
-//                        Image(systemName: "person.3.sequence.fill")
-//                            .padding()
-//                            .onTapGesture {
-//                                isShowingFriendsModal = true
-//                            }
-//                    }
-//                }
-//
-//                ToolbarItem(placement: .bottomBar) {
-//                    Image(systemName: "arrow.clockwise.circle.fill")
-//                        .padding()
-//                        .animation(.linear(duration: 1))
-//                        .onTapGesture {
-//                            //                            judul = "HAHAHA"
-//                            refreshView = true
-//                            let cloudKitSync = PersistenceController.shared // Your CloudKit synchronization manager
-//                            cloudKitSync.fetchAndSyncData { success in
-//                                if success {
-//                                    print("Data fetched and synced successfully")
-//                                } else {
-//                                    print("Error fetching and syncing data")
-//                                }
-//                            }
-//                            //                            isShowingProfileModal = true
-//
-//                            //                            TimelineView()
-//                        }
-//
-//                }
+                //                ToolbarItem(placement: .navigationBarTrailing) {
+                //                    HStack {
+                //                        Image(systemName: "person.crop.circle")
+                //                            .padding()
+                //                            .onTapGesture {
+                //                                isShowingProfileModal = true
+                //                            }
+                //                    }
+                //                }
+                //                ToolbarItem(placement: .navigationBarTrailing) {
+                //                    HStack {
+                //                        Image(systemName: "person.3.sequence.fill")
+                //                            .padding()
+                //                            .onTapGesture {
+                //                                isShowingFriendsModal = true
+                //                            }
+                //                    }
+                //                }
+                //
+                //                ToolbarItem(placement: .bottomBar) {
+                //                    Image(systemName: "arrow.clockwise.circle.fill")
+                //                        .padding()
+                //                        .animation(.linear(duration: 1))
+                //                        .onTapGesture {
+                //                            //                            judul = "HAHAHA"
+                //                            refreshView = true
+                //                            let cloudKitSync = PersistenceController.shared // Your CloudKit synchronization manager
+                //                            cloudKitSync.fetchAndSyncData { success in
+                //                                if success {
+                //                                    print("Data fetched and synced successfully")
+                //                                } else {
+                //                                    print("Error fetching and syncing data")
+                //                                }
+                //                            }
+                //                            //                            isShowingProfileModal = true
+                //
+                //                            //                            TimelineView()
+                //                        }
+                //
+                //                }
                 
                 ToolbarItem(placement: .bottomBar) {
                     Image(systemName: "square.and.pencil")
@@ -126,13 +126,19 @@ struct ContentView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+private func timeAgo(from date: Date) -> String {
+    let componentsFormatter = DateComponentsFormatter()
+    componentsFormatter.unitsStyle = .abbreviated
+    componentsFormatter.zeroFormattingBehavior = .dropAll
+    componentsFormatter.allowedUnits = [.year, .month, .weekOfMonth, .day, .hour, .minute, .second]
+    
+    if let formattedString = componentsFormatter.string(from: date, to: Date()) {
+        return formattedString
+    } else {
+        return "Just now"
+    }
+    
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
