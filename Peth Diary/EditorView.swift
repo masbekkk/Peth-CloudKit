@@ -10,9 +10,9 @@ import RichTextKit
 
 struct EditorView: View {
     @Environment(\.dismiss) var dismiss
-    @State var diary: String = ""
-    @StateObject
-    var context = RichTextContext()
+    @State private var diary = ""
+    @State private var title: String = ""
+    @StateObject var context = RichTextContext()
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -23,64 +23,77 @@ struct EditorView: View {
     @State private var isShowingLogin: Bool = false
     
     var body: some View {
-        if isLoggedIn {
-            NavigationView{
-                NavigationStack {
-                    TextField("Ada apa hari inii?!?!", text: $diary)
-                    //                    RichTextEditor(text: $diary, context: context) {
-                    //                        $0.textContentInset = CGSize(width: 10, height: 20)
-                    //                    }
-                    //                    .background(Material.regular)
-                    //                    .cornerRadius(5)
-                    //                    .focusedValue(\.richTextContext, context)
-                    //                    .padding()
-                    //
-                    //                    RichTextKeyboardToolbar(
-                    //                        context: context,
-                    //                        leadingButtons: {},
-                    //                        trailingButtons: {}
-                    //                    )
-                }
-                .background(Color.primary.opacity(0.15))
-                .navigationBarTitle("Peth It", displayMode: .inline)
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action:{
-                            dismiss()
-                        }){
-                            Text("Cancel")
-                                .foregroundColor(Color.accentColor)
-                                .padding(.horizontal)
-                        }
+        //        if isLoggedIn {
+        NavigationView{
+            NavigationStack {
+                Form {
+                    Section(header: Text("Title")) {
+                        TextField("Gimme Story Title", text: $title)
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action:{
-                            let post = Posts(context: viewContext)
-                            post.id = UUID()
-                            post.post = diary
-                            post.timestamp = Date()
-                            do {
-                                try viewContext.save()
-                            } catch {
-                                // Replace this implementation with code to handle the error appropriately.
-                                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                                let nsError = error as NSError
-                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                            }
-                            dismiss()
-                        }){
-                            Text("Post")
-                                .foregroundColor(Color.accentColor)
-                                .padding(.horizontal)
+                    
+                    Section(header: Text("Diary")) {
+                        TextEditor(text: $diary)
+                        
+                    }
+                    
+                }
+                
+                //                RichTextEditor(text: $diary, context: context) {
+                //                    $0.textContentInset = CGSize(width: 10, height: 20)
+                //                }
+                //                .background(Material.regular)
+                //                .cornerRadius(5)
+                //                .focusedValue(\.richTextContext, context)
+                //                .padding()
+                //
+                //                RichTextKeyboardToolbar(
+                //                    context: context,
+                //                    leadingButtons: {},
+                //                    trailingButtons: {}
+                //                )
+            }
+//            .background(Color.primary.opacity(0.15))
+            .navigationBarTitle("What's Happen Today?", displayMode: .inline)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action:{
+                        dismiss()
+                    }){
+                        Text("Cancel")
+                            .foregroundColor(Color.accentColor)
+                            .padding(.horizontal)
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action:{
+                        let post = Posts(context: viewContext)
+                        post.id = UUID()
+                        post.title = title
+                        post.post = diary
+                        post.timestamp = Date()
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            // Replace this implementation with code to handle the error appropriately.
+                            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                         }
+                        dismiss()
+                    }){
+                        Text("Post")
+                            .foregroundColor(Color.accentColor)
+                            .padding(.horizontal)
                     }
                 }
             }
-            
-        } else {
-            LoginView()
         }
+        
     }
+    //        else {
+    //            LoginView()
+    //        }
+    //    }
 }
 
 struct EditorView_Previews: PreviewProvider {

@@ -15,7 +15,7 @@ struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        if isLoggedIn {
+//        if isLoggedIn {
             NavigationStack{
                 List{
                     VStack{
@@ -60,10 +60,11 @@ struct ProfileView: View {
                 .toolbarBackground(.visible, for: .navigationBar)
             }
             
-        }else {
-            LoginView()
         }
-    }
+//        else {
+//            LoginView()
+//        }
+//    }
 }
 
 struct ProfileView_Previews: PreviewProvider {

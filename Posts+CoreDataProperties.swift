@@ -18,6 +18,7 @@ extension Posts {
 
     @NSManaged public var id: UUID?
     @NSManaged public var post: String?
+    @NSManaged public var title: String?
     @NSManaged public var timestamp: Date?
     @NSManaged public var penggunas: Pengguna?
     
